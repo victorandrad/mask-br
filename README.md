@@ -7,7 +7,6 @@
 [![GitHub stars](https://img.shields.io/github/stars/amarkes/br-mask.svg)](https://github.com/amarkes/br-mask/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/amarkes/br-mask.svg)](https://github.com/amarkes/br-mask/network)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/amarkes/br-mask/master/LICENSE)
-[![Build Status](https://travis-ci.org/amarkes/br-mask.svg?branch=master)](https://travis-ci.org/amarkes/br-mask)
 
 
 return custom mask in input for ionic 4
@@ -21,13 +20,13 @@ return custom mask in input for ionic 4
 # install
 
 ```sh
-npm install br-mask --save -E
+npm install mask-br --save -E
 ```
 
 # Usage
 
 ```javascript
-import { BrMaskerModule } from 'br-mask';
+import { BrMaskerModule } from 'mask-br';
 
 @NgModule({
   imports: [
@@ -127,7 +126,7 @@ import { BrMaskerModule } from 'br-mask';
 
 # Features
 ```js
-import { BrMaskDirective, BrMaskModel } from 'br-mask';
+import { BrMaskDirective, BrMaskModel } from 'mask-br';
 
 ...
 
