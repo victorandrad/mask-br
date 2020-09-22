@@ -280,23 +280,28 @@ export class BrMaskDirective implements OnInit {
   */
   private phoneMask(value: any): string {
     let formValue = value;
-    if (formValue.length > 14 || formValue.length === 11) {
+
+    let fieldLength = formValue.length;
+
+    if (fieldLength > 18) { // +55 99 99999 9999 - Celular com DDI
+      this.brmasker.len = 19;
+      this.brmasker.mask = '+99 (99) 99999-9999';
+    } else if (fieldLength > 15) { // +55 99 99999 9999 - Fixo  com DDI
+      this.brmasker.len = 18;
+      this.brmasker.mask = '+99 (99) 9999-9999';
+    } else if (fieldLength === 15) { // 19 9 9999 9999 - Celular
       this.brmasker.len = 15;
       this.brmasker.mask = '(99) 99999-9999';
-      formValue = formValue.replace(/\D/gi, '');
-      formValue = formValue.replace(/(\d{2})(\d)/gi, '$1 $2');
-      formValue = formValue.replace(/(\d{5})(\d)/gi, '$1-$2');
-      formValue = formValue.replace(/(\d{4})(\d)/gi, '$1$2');
-    } else {
+    } else { // 19 9999 9999 - Fixo
       this.brmasker.len = 14;
       this.brmasker.mask = '(99) 9999-9999';
-      formValue = formValue.replace(/\D/gi, '');
-      formValue = formValue.replace(/(\d{2})(\d)/gi, '$1 $2');
-      formValue = formValue.replace(/(\d{4})(\d)/gi, '$1-$2');
-      formValue = formValue.replace(/(\d{4})(\d)/gi, '$1$2');
     }
+
+    formValue = formValue.replace(/\D/gi, '');
+
     return this.onInput(formValue);
   }
+  
   /**
   * Here we have a mask for phone in 8 digits or 9 digits not ddd
   * @author Antonio Marques <tmowna@gmail.com>
